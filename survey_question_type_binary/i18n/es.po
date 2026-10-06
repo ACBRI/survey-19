@@ -1,0 +1,314 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* survey_question_type_binary
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_user_input_line.py:0
+msgid "%(count)s files"
+msgstr "%(count)s archivos"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_question_form_inherit_question_type_binary
+msgid "<i class=\"fa fa-upload fa-4x\" role=\"img\" aria-label=\"Upload\" title=\"Upload\"/>"
+msgstr "<i class=\"fa fa-upload fa-4x\" role=\"img\" aria-label=\"Subir\" title=\"Subir\"/>"
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_user_input_line.py:0
+msgid "A question can either be skipped or answered, not both."
+msgstr "Las preguntas se pueden omitir o responder, no las dos."
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_question__allowed_filemimetypes
+msgid "Allowed Filemimetypes"
+msgstr "Tipos de archivo permitidos"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line__answer_type
+msgid "Answer Type"
+msgstr "Tipo de respuesta"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_user_input_line_view_form_inherit_question_type_binary
+msgid "Archive"
+msgstr "Archivo comprimido"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields.selection,name:survey_question_type_binary.selection__survey_question__question_type__binary
+#: model:ir.model.fields.selection,name:survey_question_type_binary.selection__survey_user_input_line__answer_type__binary
+msgid "Binary"
+msgstr "Archivo"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_question__display_name
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input__display_name
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line__display_name
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_user_input_line_view_form_inherit_question_type_binary
+msgid "Document"
+msgstr "Documento"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__value_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_user_input_line_view_form_inherit_question_type_binary
+msgid "File"
+msgstr "Archivo"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,help:survey_question_type_binary.field_survey_question__allowed_filemimetypes
+msgid ""
+"File types accepted, separated by commas: MIME types, groups of them or "
+"extensions (E.g: image/*,application/pdf or .pdf). On a phone, image types "
+"let the participant take a photo or pick one from the gallery. Leave empty "
+"to allow any file."
+msgstr "Tipos de archivo aceptados, separados por comas: tipos MIME, grupos de ellos o extensiones (p. ej.: image/*,application/pdf o .pdf). En un teléfono, los tipos de imagen permiten tomar una foto o elegirla de la galería. Vacío para aceptar cualquier archivo."
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__filename
+msgid "Filename"
+msgstr "Nombre del archivo"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line__answer_binary_ids
+msgid "Files"
+msgstr "Archivos"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_question__id
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input__id
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line__id
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__id
+msgid "ID"
+msgstr "ID"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__is_binary_image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__input_line_id
+msgid "Input Line"
+msgstr "Línea de respuesta"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_question__max_filesize
+msgid "Max Filesize"
+msgstr "Tamaño máximo del archivo"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,help:survey_question_type_binary.field_survey_question__max_filesize
+msgid ""
+"Maximum size of each file, in bytes (Default 50MB). Leave empty to allow any"
+" size: a submitted page is still limited by the upload limit of the server "
+"(web.max_file_upload_size)."
+msgstr "Tamaño máximo de cada archivo, en bytes (por defecto, 50 MB). Vacío para aceptar cualquier tamaño: una página enviada sigue limitada por el tope de subida del servidor (web.max_file_upload_size)."
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields.selection,name:survey_question_type_binary.selection__survey_user_input_line__answer_type__multi_binary
+msgid "Multi: Binary"
+msgstr "Varios archivos"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields.selection,name:survey_question_type_binary.selection__survey_question__question_type__multi_binary
+msgid "Multiple: Binary"
+msgstr "Varios archivos"
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+msgid "Only one file can be sent for this question."
+msgstr "Esta pregunta admite un solo archivo."
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_user_input_line_view_form_inherit_question_type_binary
+msgid "PDF"
+msgstr "PDF"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.view_survey_user_input_line_binary_form
+msgid "Preview"
+msgstr "Vista previa"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_question__question_type
+msgid "Question Type"
+msgstr "Tipo de pregunta"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_question_form_inherit_question_type_binary
+msgid "Send us your files"
+msgstr "Envíenos sus archivos"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__value_binary_size_display
+msgid "Size"
+msgstr "Tamaño"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__value_binary_size
+msgid "Size (bytes)"
+msgstr "Tamaño (bytes)"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_user_input_line_view_form_inherit_question_type_binary
+msgid "Spreadsheet"
+msgstr "Hoja de cálculo"
+
+#. module: survey_question_type_binary
+#: model:ir.model,name:survey_question_type_binary.model_survey_question
+msgid "Survey Question"
+msgstr "Pregunta de la encuesta"
+
+#. module: survey_question_type_binary
+#: model:ir.model,name:survey_question_type_binary.model_survey_user_input
+msgid "Survey User Input"
+msgstr "Entrada de usuario de la encuesta"
+
+#. module: survey_question_type_binary
+#: model:ir.model,name:survey_question_type_binary.model_survey_user_input_line
+msgid "Survey User Input Line"
+msgstr "Línea de entrada de usuario de la encuesta"
+
+#. module: survey_question_type_binary
+#: model:ir.model,name:survey_question_type_binary.model_survey_user_input_line_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.view_survey_user_input_line_binary_form
+msgid "Survey User Input Line Binary"
+msgstr "Archivo de una respuesta de la encuesta"
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_user_input_line.py:0
+msgid "The answer must be in the right type"
+msgstr "La respuesta debe estar en el tipo adecuado"
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+msgid "The file above is saved: choose another one only to replace it."
+msgstr "El archivo de arriba ya está guardado: elija otro solo si quiere reemplazarlo."
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+msgid "The files above are saved: choose new ones only to replace them."
+msgstr "Los archivos de arriba ya están guardados: elija otros solo si quiere reemplazarlos."
+
+#. module: survey_question_type_binary
+#. odoo-javascript
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+#: code:addons/survey_question_type_binary/static/src/js/survey_form.esm.js:0
+msgid ""
+"These files weigh %(size)s together; one page can send up to %(limit)s. "
+"Choose fewer files or smaller ones."
+msgstr "Estos archivos pesan %(size)s en total; una página puede enviar hasta %(limit)s. Elija menos archivos o más livianos."
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_user_input.py:0
+msgid "This answer cannot be overwritten."
+msgstr "Esta respuesta no se puede sobrescribir."
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+msgid "This is not a file"
+msgstr "Esto no es un archivo"
+
+#. module: survey_question_type_binary
+#. odoo-javascript
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+#: code:addons/survey_question_type_binary/static/src/js/survey_form.esm.js:0
+msgid "This question requires an answer."
+msgstr "Esta pregunta requiere una respuesta."
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.question_binary_print
+msgid "This question was skipped"
+msgstr "Esta pregunta fue omitida"
+
+#. module: survey_question_type_binary
+#: model:ir.model.fields,field_description:survey_question_type_binary.field_survey_user_input_line_binary__value_binary_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+msgid "Up to %(limit)s per file."
+msgstr "Hasta %(limit)s por archivo."
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.question_result_binary
+msgid "User Responses"
+msgstr "Respuestas del usuario"
+
+#. module: survey_question_type_binary
+#: model_terms:ir.ui.view,arch_db:survey_question_type_binary.survey_question_form_inherit_question_type_binary
+msgid "e.g. image/*,application/pdf"
+msgstr "p. ej. image/*,application/pdf"
+
+#. module: survey_question_type_binary
+#. odoo-javascript
+#: code:addons/survey_question_type_binary/static/src/js/survey_form.esm.js:0
+msgid "“%(filename)s” could not be read. Choose it again."
+msgstr "No se pudo leer «%(filename)s». Elíjalo de nuevo."
+
+#. module: survey_question_type_binary
+#. odoo-javascript
+#: code:addons/survey_question_type_binary/static/src/js/survey_form.esm.js:0
+msgid "“%(filename)s” is not an accepted file type."
+msgstr "«%(filename)s» no es un tipo de archivo aceptado."
+
+#. module: survey_question_type_binary
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+msgid "“%(filename)s” is not an accepted file type. Accepted: %(types)s."
+msgstr "«%(filename)s» no es un tipo de archivo aceptado. Se aceptan: %(types)s."
+
+#. module: survey_question_type_binary
+#. odoo-javascript
+#. odoo-python
+#: code:addons/survey_question_type_binary/models/survey_question.py:0
+#: code:addons/survey_question_type_binary/static/src/js/survey_form.esm.js:0
+msgid "“%(filename)s” weighs %(size)s; the limit is %(limit)s per file."
+msgstr "«%(filename)s» pesa %(size)s; el límite es %(limit)s por archivo."
