@@ -12,6 +12,25 @@
 
 survey
 
+This repository is a fork of [OCA/survey](https://github.com/OCA/survey), branch 19.0.
+It adds the migration to Odoo 19.0 of
+[survey_question_type_binary](survey_question_type_binary/), which OCA/survey has up to
+17.0: a survey question answered with files, such as photos taken with the camera or
+picked from the gallery of a phone, or a PDF.
+
+**Credits.** `survey_question_type_binary` was written by Jose Zambudio, of
+[Aures TIC](https://aurestic.es/), with the
+[Odoo Community Association (OCA)](https://odoo-community.org/), which maintains it and
+every other module of this repository. Its history comes with it, commit by commit and
+with its original authors and translators. The migration to 19.0 is by Andrés Camilo
+Briñez Nuñez ([ACBRI](https://github.com/ACBRI)). Like the original, it is licensed under
+AGPL-3.0.
+
+The other modules are those of OCA/survey 19.0, unchanged. The workflows in `.github/`
+are the OCA ones; `ci/` holds the checks run on this fork: the OCA pre-commit in a
+container (`ci/controles.sh`) and the tests of the migrated module in a disposable
+Odoo 19 (`ci/pruebas.sh`).
+
 <!-- /!\ do not modify below this line -->
 
 <!-- prettier-ignore-start -->
@@ -35,6 +54,7 @@ addon | version | maintainers | summary
 [survey_multi_company](survey_multi_company/) | 19.0.1.0.0 | <a href='https://github.com/pilarvargas-tecnativa'><img src='https://github.com/pilarvargas-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='pilarvargas-tecnativa'/></a> | Company security for surveys
 [survey_next_survey_update_partner](survey_next_survey_update_partner/) | 19.0.1.0.0 | <a href='https://github.com/pilarvargas-tecnativa'><img src='https://github.com/pilarvargas-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='pilarvargas-tecnativa'/></a> | Update the partner values when it's generated from the previous survey
 [survey_partner_representative](survey_partner_representative/) | 19.0.1.0.1 | <a href='https://github.com/chienandalu'><img src='https://github.com/chienandalu.png' width='32' height='32' style='border-radius:50%;' alt='chienandalu'/></a> | Fill the survey on behalf of others
+[survey_question_type_binary](survey_question_type_binary/) | 19.0.1.0.0 |  | This module add binary field as question type for survey page
 [survey_question_type_model_selection](survey_question_type_model_selection/) | 19.0.1.0.0 | <a href='https://github.com/eduezerouali-tecnativa'><img src='https://github.com/eduezerouali-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='eduezerouali-tecnativa'/></a> | This module add model selection field as question type for survey page
 [survey_resource_booking](survey_resource_booking/) | 19.0.1.0.0 | <a href='https://github.com/Yajo'><img src='https://github.com/Yajo.png' width='32' height='32' style='border-radius:50%;' alt='Yajo'/></a> | Access survey answers from resource booking
 [survey_result_mail](survey_result_mail/) | 19.0.1.0.0 | <a href='https://github.com/pilarvargas-tecnativa'><img src='https://github.com/pilarvargas-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='pilarvargas-tecnativa'/></a> | Send survey answers to the survey user
