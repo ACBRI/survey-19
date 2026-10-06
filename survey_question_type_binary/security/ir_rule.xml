@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- The files of an answer are visible to whoever sees its answer line -->
+<odoo>
+    <record id="survey_user_input_line_binary_rule_survey_manager" model="ir.rule">
+        <field
+            name="name"
+        >Survey user input line binary: manager: all non specialized surveys</field>
+        <field name="model_id" ref="model_survey_user_input_line_binary" />
+        <field
+            name="domain_force"
+        >[('input_line_id.survey_id.survey_type', 'in', ('assessment', 'custom', 'live_session', 'survey'))]</field>
+        <field name="groups" eval="[(4, ref('survey.group_survey_manager'))]" />
+    </record>
+    <record id="survey_user_input_line_binary_rule_survey_user" model="ir.rule">
+        <field
+            name="name"
+        >Survey user input line binary: officer: unrestricted survey or in restricted users</field>
+        <field name="model_id" ref="model_survey_user_input_line_binary" />
+        <field name="domain_force">[
+            '&amp;', ('input_line_id.survey_id.survey_type', 'in', ('assessment', 'custom', 'live_session', 'survey')),
+            '|', ('input_line_id.survey_id.restrict_user_ids', 'in', user.id),
+                 ('input_line_id.survey_id.restrict_user_ids', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('survey.group_survey_user'))]" />
+    </record>
+</odoo>

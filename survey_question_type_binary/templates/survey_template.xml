@@ -4,55 +4,194 @@
         id="question_conainer_inh_type_binary"
         inherit_id="survey.question_container"
     >
-        <xpath expr="//t[@t-call='survey.question_matrix']/.." position="after">
-            <t t-if="question.question_type in ('binary', 'multi_binary')">
-                <t t-call="survey_question_type_binary.question_binary" />
-            </t>
+        <xpath expr="//t[@t-call='survey.question_matrix']" position="after">
+            <t
+                t-if="question.question_type in ('binary', 'multi_binary')"
+                t-call="survey_question_type_binary.question_binary"
+            />
         </xpath>
     </template>
 
     <template id="survey_page_print" inherit_id="survey.survey_page_print">
-        <xpath expr="//t[@t-call='survey.question_matrix']/.." position="after">
-            <t t-if="question.question_type in ('binary', 'multi_binary')">
-                <t t-call="survey_question_type_binary.question_binary" />
-            </t>
+        <xpath expr="//t[@t-call='survey.question_matrix']" position="after">
+            <t
+                t-if="question.question_type in ('binary', 'multi_binary')"
+                t-call="survey_question_type_binary.question_binary_print"
+            />
         </xpath>
     </template>
 
+    <template
+        id="survey_page_statistics_question"
+        inherit_id="survey.survey_page_statistics_question"
+    >
+        <!-- Files have no chart nor table tab to switch to -->
+        <xpath expr="//ul[@role='tablist']" position="attributes">
+            <attribute
+                name="t-if"
+                add="question.question_type not in ['binary', 'multi_binary']"
+                separator=" and "
+            />
+        </xpath>
+        <xpath expr="//t[@t-call='survey.question_result_matrix']" position="after">
+            <t
+                t-elif="question.question_type in ['binary', 'multi_binary']"
+                t-call="survey_question_type_binary.question_result_binary"
+            />
+        </xpath>
+    </template>
+
+    <!-- The question, as the participant answers it -->
     <template id="question_binary" name="Question: Binary">
-        <div class="o_survey_comment_container p-0">
-            <t t-if="answer_lines and answer_lines[0].answer_binary_ids">
-                <t t-foreach="answer_lines[0].answer_binary_ids" t-as="answer_binary">
-                    <t t-if="answer_binary.is_binary_image">
-                        <img
-                            t-attf-src="/web/image?model=#{answer_binary._name}&amp;id=#{answer_binary.id}&amp;field=value_binary"
-                        />
-                    </t>
-                    <t t-elif="answer_binary.value_binary">
-                        <p>
-                            <t t-out="answer_binary.filename" />
-                        </p>
-                    </t>
-                    <t t-else="">
-                        <input
-                            type="file"
-                            t-att-name="question.id"
-                            t-on-change="binaryChange"
-                            t-att-data-question-type="question.question_type"
-                            t-att-value="answer_binary[0].value_binary if answer_lines else None"
-                        />
-                    </t>
-                </t>
-            </t>
-            <t t-else="">
-                <input
-                    type="file"
-                    t-att-name="question.id"
-                    t-on-change="binaryChange"
-                    t-att-data-question-type="question.question_type"
-                    t-att-multiple="question.question_type == 'multi_binary' and 'multiple' or False"
+        <t t-set="binary_files" t-value="answer_lines.answer_binary_ids" />
+        <div class="o_survey_question_binary_wrapper">
+            <t
+                t-if="binary_files"
+                t-call="survey_question_type_binary.binary_answer_files"
+            />
+            <input
+                type="file"
+                class="form-control o_survey_question_binary"
+                t-att-name="question.id"
+                t-att-data-question-type="question.question_type"
+                t-att-multiple="'multiple' if question.question_type == 'multi_binary' else None"
+                t-att-accept="question._get_binary_accept() or None"
+                t-att-data-max-file-size="question._get_binary_max_file_size()"
+                t-att-data-max-upload-size="question._get_binary_max_request_size()"
+                t-att-data-has-answer="'1' if binary_files else None"
+                t-att-aria-describedby="'o_survey_binary_hint_%s' % question.id"
+            />
+            <div
+                class="form-text"
+                t-att-id="'o_survey_binary_hint_%s' % question.id"
+                t-out="question._get_binary_hint(bool(binary_files))"
+            />
+            <ul class="o_survey_binary_selection list-unstyled small mt-2 mb-0" />
+        </div>
+    </template>
+
+    <!-- The answer, on the printed survey -->
+    <template id="question_binary_print" name="Question: Binary (print)">
+        <t t-set="binary_files" t-value="answer_lines.answer_binary_ids" />
+        <t
+            t-if="binary_files"
+            t-call="survey_question_type_binary.binary_answer_files"
+        />
+        <div t-elif="answer_lines" class="row g-0">
+            <div class="col-12 o_survey_choice_question_skipped mt-1">
+                This question was skipped
+            </div>
+        </div>
+        <input
+            t-elif="not answer"
+            type="file"
+            class="form-control"
+            disabled="disabled"
+        />
+    </template>
+
+    <!-- Files already saved, reached through the tokens of the answer -->
+    <template id="binary_answer_files" name="Question: Binary: saved files">
+        <ul class="list-unstyled d-flex flex-column gap-2 mb-2 o_survey_binary_files">
+            <li t-foreach="binary_files" t-as="binary_file">
+                <t
+                    t-set="binary_url"
+                    t-value="'/survey/binary/%s/%s/%s' % (survey.access_token, answer.access_token, binary_file.id)"
                 />
-            </t>
+                <a
+                    t-att-href="binary_url"
+                    target="_blank"
+                    class="d-inline-flex align-items-center gap-2 text-break"
+                >
+                    <img
+                        t-if="binary_file.is_binary_image"
+                        t-att-src="'%s?thumbnail=1' % binary_url"
+                        t-att-alt="binary_file.filename"
+                        class="rounded border object-fit-cover"
+                        style="width: 4rem; height: 4rem;"
+                        loading="lazy"
+                    />
+                    <i
+                        t-elif="binary_file.value_binary_type == 'application/pdf'"
+                        class="fa fa-file-pdf-o fa-2x"
+                        aria-hidden="true"
+                    />
+                    <i t-else="" class="fa fa-file-o fa-2x" aria-hidden="true" />
+                    <span t-out="binary_file.filename" />
+                    <small
+                        class="text-muted text-nowrap"
+                        t-out="binary_file.value_binary_size_display"
+                    />
+                </a>
+            </li>
+        </ul>
+    </template>
+
+    <!-- The answers, on the results of the survey (survey officers) -->
+    <template
+        id="question_result_binary"
+        name="Question: binary result (binary, multi_binary)"
+    >
+        <div class="o_survey_results_table_wrapper overflow-auto">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User Responses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        t-foreach="question_data['answer_line_done_ids']"
+                        t-as="answer_line"
+                    >
+                        <td>
+                            <a
+                                t-att-href="answer_line.user_input_id.get_print_url()"
+                                target="_blank"
+                                t-out="answer_line_index + 1"
+                            />
+                        </td>
+                        <td>
+                            <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                                <li
+                                    t-foreach="answer_line.answer_binary_ids"
+                                    t-as="binary_file"
+                                >
+                                    <a
+                                        t-att-href="'/web/content/%s/%s/value_binary?download=true&amp;filename_field=filename' % (binary_file._name, binary_file.id)"
+                                        class="d-inline-flex align-items-center gap-2 text-break"
+                                    >
+                                        <img
+                                            t-if="binary_file.is_binary_image"
+                                            t-att-src="'/web/image/%s/%s/value_binary/128x128' % (binary_file._name, binary_file.id)"
+                                            t-att-alt="binary_file.filename"
+                                            class="rounded border object-fit-cover"
+                                            style="width: 4rem; height: 4rem;"
+                                            loading="lazy"
+                                        />
+                                        <i
+                                            t-elif="binary_file.value_binary_type == 'application/pdf'"
+                                            class="fa fa-file-pdf-o fa-2x"
+                                            aria-hidden="true"
+                                        />
+                                        <i
+                                            t-else=""
+                                            class="fa fa-file-o fa-2x"
+                                            aria-hidden="true"
+                                        />
+                                        <span t-out="binary_file.filename" />
+                                        <small
+                                            class="text-muted text-nowrap"
+                                            t-out="binary_file.value_binary_size_display"
+                                        />
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 </odoo>

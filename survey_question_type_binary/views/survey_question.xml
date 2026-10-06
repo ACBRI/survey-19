@@ -10,25 +10,34 @@
         <field name="model">survey.question</field>
         <field name="inherit_id" ref="survey.survey_question_form" />
         <field name="arch" type="xml">
-            <xpath expr="//sheet/group[2]/group[2]/div" position="inside">
-                <div invisible="question_type not in ['binary','multi_binary']">
-                    <i class="fa fa-upload fa-2x" title="upload" /> Upload binary
+            <xpath expr="//div[hasclass('o_preview_questions')]" position="inside">
+                <div invisible="question_type not in ['binary', 'multi_binary']">
+                    <p class="mb-0">Send us your files</p>
+                    <i
+                        class="fa fa-upload fa-4x"
+                        role="img"
+                        aria-label="Upload"
+                        title="Upload"
+                    />
                 </div>
             </xpath>
-            <xpath expr="//field[@name='validation_email']/../.." position="attributes">
+            <!-- A file has no correct answer to set -->
+            <xpath expr="//page[@name='answers']" position="attributes">
                 <attribute
                     name="invisible"
-                >question_type not in ['char_box', 'numerical_box', 'date', 'datetime', "binary", "multi_binary"]</attribute>
+                    add="question_type in ['binary', 'multi_binary']"
+                    separator=" or "
+                />
             </xpath>
-
             <xpath expr="//field[@name='validation_required']" position="before">
                 <field
                     name="allowed_filemimetypes"
-                    invisible="question_type not in ['binary','multi_binary']"
+                    invisible="question_type not in ['binary', 'multi_binary']"
+                    placeholder="e.g. image/*,application/pdf"
                 />
                 <field
                     name="max_filesize"
-                    invisible="question_type not in ['binary','multi_binary']"
+                    invisible="question_type not in ['binary', 'multi_binary']"
                 />
             </xpath>
         </field>

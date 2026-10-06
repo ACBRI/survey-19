@@ -1,0 +1,11 @@
+// The error box of a survey question is sized for one short line. Messages
+// about files name the file and the limit: on a phone they take two or three
+// lines, so the box of a binary question grows with its text.
+.o_survey_form .js_question-wrapper:has(> .o_survey_question_binary_wrapper) {
+    > .o_survey_question_error.slide_in {
+        height: auto;
+        line-height: 1.5;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+}

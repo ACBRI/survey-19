@@ -5,20 +5,25 @@
     "name": "Survey binary question type",
     "summary": """
         This module add binary field as question type for survey page""",
-    "version": "17.0.1.0.0",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "author": "Aures TIC, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/survey",
     "depends": ["survey"],
     "data": [
         "security/ir.model.access.csv",
+        "security/ir_rule.xml",
         "views/survey_question.xml",
         "views/survey_user_input_line.xml",
         "templates/survey_template.xml",
     ],
     "assets": {
         "survey.survey_assets": [
-            "survey_question_type_binary/static/src/js/survey_form.js",
+            "survey_question_type_binary/static/src/js/survey_form.esm.js",
+            "survey_question_type_binary/static/src/scss/survey_form.scss",
+        ],
+        "web.assets_tests": [
+            "survey_question_type_binary/static/tests/tours/*.esm.js",
         ],
     },
 }
