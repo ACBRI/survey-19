@@ -1,0 +1,32 @@
+# Laboratorio desechable de las pruebas: la imagen de pruebas del sitio (la de
+# producción con un Chromium sin pantalla para los tours) y un Postgres efímero. Sirve
+# cualquier imagen de Odoo 19 con Chromium y websocket-client: IMAGEN=<imagen>
+# ci/pruebas.sh. El repositorio entero se monta como carpeta de complementos, igual que
+# en la integración continua de la OCA. El nombre del proyecto lo pone ci/pruebas.sh,
+# así dos corridas no chocan.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  web:
+    image: ${IMAGEN:-ci-odoo-brinez-navegador:19.0}
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - datos:/var/lib/odoo
+      - ..:/mnt/survey:ro
+volumes:
+  datos:
